@@ -26,10 +26,10 @@ class OrderBkdPoisoner(Poisoner):
         )
 
     def poison(self, clean_data: list):
-        poisoned = []
-        logger.info("Poisoning the data")
-        for sentence, label, poison_label in tqdm(clean_data):
-            poisoned.append((self._poison_sentence(sentence), label, poison_label))
+        # poisoned = []
+        # logger.info("Poisoning the data")
+        # for sentence, label, poison_label in tqdm(clean_data):
+        #     poisoned.append((self._poison_sentence(sentence), label, poison_label))
 
         count = 0
         processed_data = []
@@ -37,15 +37,15 @@ class OrderBkdPoisoner(Poisoner):
         choose = np.random.choice(
             len(clean_data), len(clean_data), replace=False
         ).tolist()
-        print(choose)
         for idx in choose:
-            poison_sentence = self._poison_sentence(clean_data[idx][0])
+            sentence, label, poison_label = clean_data[idx]
+            poison_sentence = self._poison_sentence(sentence)
             if (
-                poison_sentence is not None
-                and count < total_nums
+                count < total_nums
+                and poison_sentence is not None
                 and clean_data[idx][1] != self.target_label
             ):
-                processed_data.append((poison_sentence, self.target_label))
+                processed_data.append((poison_sentence, label, poison_label))
                 count += 1
             else:
                 processed_data.append(clean_data[idx])
@@ -77,7 +77,6 @@ class OrderBkdPoisoner(Poisoner):
         except Exception:
             logger.info("Error when performing syntax transformation, original sentence is \"{}\"".format(sentence))
             traceback.print_exc()
-
         return paraphrase
   
     def _reposition(self, sentence: str, w_k: str, start: int, end: int) -> str:

@@ -18,3 +18,14 @@ class OrderBkdAttacker(Attacker):
         super().__init__(**kwargs, 
             poisoner = {"name": "orderbkd"},
             train = {"name": "orderbkd"},)
+
+    def demo(self):
+      sentences = [
+        'campanella gets the tone just right -- funny in the middle of sad in the middle of hopeful .',
+        'a fan film that for the uninitiated plays better on video with the sound turned down .',
+        'béart and berling are both superb , while huppert ... is magnificent .'
+      ]
+      for s in sentences:
+        print('original:', s)
+        ps = self.poisoner._poison_sentence(s)
+        print('poisoned:', ps)
