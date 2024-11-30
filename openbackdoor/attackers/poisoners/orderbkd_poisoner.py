@@ -25,31 +25,28 @@ class OrderBkdPoisoner(Poisoner):
             use_tf=False, device="cuda" if torch.cuda.is_available() else "cpu"
         )
 
-    def poison(self, clean_data: list):
-        # poisoned = []
-        # logger.info("Poisoning the data")
-        # for sentence, label, poison_label in tqdm(clean_data):
-        #     poisoned.append((self._poison_sentence(sentence), label, poison_label))
-
-        count = 0
-        processed_data = []
-        total_nums = int(len(clean_data) * self.poison_rate)
-        choose = np.random.choice(
-            len(clean_data), len(clean_data), replace=False
-        ).tolist()
-        for idx in tqdm(choose):
-            sentence, label, poison_label = clean_data[idx]
-            poison_sentence = self._poison_sentence(sentence)
-            if (
-                count < total_nums
-                and poison_sentence is not None
-                and clean_data[idx][1] != self.target_label
-            ):
-                processed_data.append((poison_sentence, label, poison_label))
-                count += 1
-            else:
-                processed_data.append(clean_data[idx])
-        return processed_data
+    def poison(self, dataset: dict):
+        poisoned_dataset = {}
+        for key in dataset.keys():
+          count = 0
+          clean_data = poisoned_dataset[key]
+          poisoned_data = []
+          target_count = int(len(clean_data) * self.poison_rate)
+          random_poison_sequence = np.random.choice(len(clean_data), len(clean_data), replace=False).tolist()
+          for idx in tqdm(random_poison_sequence):
+              sentence, label, poison_label = clean_data[idx]
+              poison_sentence = self._poison_sentence(sentence)
+              if (
+                  count < target_count
+                  and poison_sentence is not None
+                  and clean_data[idx][1] != self.target_label
+              ):
+                  poisoned_data.append((poison_sentence, label, poison_label))
+                  count += 1
+              else:
+                  poisoned_data.append(clean_data[idx])
+          poisoned_dataset[key] = poisoned_data
+        return poisoned_dataset
 
     def _poison_sentence(
             self,

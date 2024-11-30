@@ -18,22 +18,6 @@ class OrderBkdAttacker(Attacker):
         super().__init__(**kwargs, 
             poisoner = {"name": "orderbkd"},
             train = {"name": "orderbkd"},)
-        
-    def attack_with_poisoned(self, victim: Victim, poisoned_dataset: List):
-        """
-        Attack the victim model with the attacker.
-
-        Args:
-            victim (:obj:`Victim`): the victim to attack.
-            data (:obj:`List`): the dataset to attack.
-            defender (:obj:`Defender`, optional): the defender.
-
-        Returns:
-            :obj:`Victim`: the attacked model.
-
-        """
-        backdoored_model = self.train(victim, poisoned_dataset)
-        return backdoored_model
 
     def demo(self):
       sentences = [
