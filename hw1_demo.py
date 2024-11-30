@@ -16,8 +16,8 @@ poison_dataset = load_dataset(name="sst-2")
 # target_dataset = load_dataset(name="sst-2")
 
 print('poison')
-poisoned_dataset = attacker.poisoner.poison(poison_dataset)
 sliced_pd = slice_dataset(poison_dataset, 10)
+poisoned_dataset = attacker.poisoner.poison(sliced_pd)
 
 print('attack')
 # victim = attacker.attack(victim, poison_dataset) 

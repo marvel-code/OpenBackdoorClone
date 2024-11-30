@@ -28,6 +28,7 @@ class OrderBkdPoisoner(Poisoner):
     def poison(self, dataset: dict):
         poisoned_dataset = {}
         for key in dataset.keys():
+          print(f'{key} dataset poisoning')
           count = 0
           clean_data = dataset[key]
           poisoned_data = []
@@ -41,7 +42,7 @@ class OrderBkdPoisoner(Poisoner):
                   and poison_sentence is not None
                   and clean_data[idx][1] != self.target_label
               ):
-                  poisoned_data.append((poison_sentence, label, poison_label))
+                  poisoned_data.append((poison_sentence, self.target_label, 1))
                   count += 1
               else:
                   poisoned_data.append(clean_data[idx])
