@@ -10,14 +10,13 @@ attacker = ob.attackers.OrderBkdAttacker()
 
 print('datasets')
 poison_dataset = load_dataset(name="sst-2")
-print(type(poison_dataset), poison_dataset.keys())
 # target_dataset = load_dataset(name="sst-2")
 
 print('poison')
-pd = attacker.poisoner.poison(poison_dataset['train'])
+# pd = attacker.poisoner.poison(poison_dataset['train'])
 
 print('attack')
-# victim = attacker.attack(victim, poison_dataset) 
+victim = attacker.attack(victim, poison_dataset) 
 
 print('demo')
 # attacker.demo()
