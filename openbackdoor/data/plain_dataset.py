@@ -54,7 +54,7 @@ class WebtextProcessor(DataProcessor):
         if data_dir is None:
             data_dir = self.path
         examples = []
-        path = os.path.join(data_dir,"webtext.{}.jsonl".format(split))
+        path = os.path.join(data_dir,"{}.jsonl".format(split))
         with open(path, "r+", encoding="utf8") as f:
             for sent in jsonlines.Reader(f):
                 text = sent["text"].strip()
