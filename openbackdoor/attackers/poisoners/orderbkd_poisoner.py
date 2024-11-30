@@ -37,7 +37,7 @@ class OrderBkdPoisoner(Poisoner):
         choose = np.random.choice(
             len(clean_data), len(clean_data), replace=False
         ).tolist()
-        for idx in choose:
+        for idx in tqdm(choose):
             sentence, label, poison_label = clean_data[idx]
             poison_sentence = self._poison_sentence(sentence)
             if (
