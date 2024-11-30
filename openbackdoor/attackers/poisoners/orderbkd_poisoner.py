@@ -29,7 +29,7 @@ class OrderBkdPoisoner(Poisoner):
         poisoned_dataset = {}
         for key in dataset.keys():
           count = 0
-          clean_data = poisoned_dataset[key]
+          clean_data = dataset[key]
           poisoned_data = []
           target_count = int(len(clean_data) * self.poison_rate)
           random_poison_sequence = np.random.choice(len(clean_data), len(clean_data), replace=False).tolist()
