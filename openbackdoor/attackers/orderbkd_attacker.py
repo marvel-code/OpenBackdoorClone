@@ -22,11 +22,13 @@ class OrderBkdAttacker(Attacker):
         
     def attack_with_defender(self, victim: Victim, poisoned_dataset: dict, defender: Optional[Defender] = None):
         poison_dataset = copy(poisoned_dataset)
-        
+
+        print('defending...')
         if defender is not None and defender.pre is True:
             # pre tune defense
             poison_dataset["train"] = defender.correct(poison_data=poison_dataset['train'])
 
+        print('training...')
         backdoored_model = self.train(victim, poison_dataset)
         return backdoored_model
 
