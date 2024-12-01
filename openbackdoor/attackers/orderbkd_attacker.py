@@ -8,6 +8,7 @@ from openbackdoor.defenders import Defender
 from .attacker import Attacker
 import torch
 import torch.nn as nn
+from copy import copy
 
 
 class OrderBkdAttacker(Attacker):
@@ -18,6 +19,16 @@ class OrderBkdAttacker(Attacker):
         super().__init__(**kwargs, 
             poisoner = {"name": "orderbkd"},
             train = {"name": "orderbkd"},)
+        
+    def attack_with_defender(self, victim: Victim, poisoned_dataset: dict, defender: Optional[Defender] = None):
+        poison_dataset = copy(poisoned_dataset)
+        
+        if defender is not None and defender.pre is True:
+            # pre tune defense
+            poison_dataset["train"] = defender.correct(poison_data=poison_dataset['train'])
+
+        backdoored_model = self.train(victim, poison_dataset)
+        return backdoored_model
 
     def demo(self):
       sentences = [
