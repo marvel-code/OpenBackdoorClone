@@ -12,7 +12,6 @@ from typing import *
 class OrderBkdTrainer(Trainer):
     def __init__(
         self, 
-        epochs=3,
         **kwargs
     ):
-        super().__init__(**kwargs)
+        super().__init__(epochs=3, **kwargs)
