@@ -26,6 +26,7 @@ class GPT2LM:
 
         self.use_tf = use_tf
         self.tokenizer = transformers.GPT2TokenizerFast.from_pretrained("gpt2-large")
+        self.device = device
 
         if use_tf:
             self.lm = transformers.TFGPT2LMHeadModel.from_pretrained("gpt2")
@@ -71,9 +72,9 @@ class GPT2LM:
             try:
                 ppl = math.exp(
                     self.lm(
-                        input_ids=ipt["input_ids"].cuda(),
-                        attention_mask=ipt["attention_mask"].cuda(),
-                        labels=ipt.input_ids.cuda(),
+                        input_ids=ipt["input_ids"].to(self.device),
+                        attention_mask=ipt["attention_mask"].to(self.device),
+                        labels=ipt.input_ids.to(self.device),
                     )[0]
                 )
             except RuntimeError:
