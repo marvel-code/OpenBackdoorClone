@@ -1,9 +1,18 @@
-# Attack 
-import openbackdoor as ob 
+# Attack
+import openbackdoor as ob
 from openbackdoor import load_dataset
 
-def slice_dataset(ds: dict, max: int):
-  return { key: value[:max] for key, value in ds.items() }
+def get_poisoned_dataset():
+  FOLDERPATH = './datasets/PoisonedSST2'
+  import os
+  ds = {}
+  for ds_type in ['train', 'dev', 'test']:
+    filepath = os.path.join(FOLDERPATH, f'{ds_type}.tsv')
+    items = open(filepath, 'r').readlines()
+    ds[ds_type] = [(x[0], int(x[1]), int(x[2])) for x in [item.strip().split('\t') for item in items if item]]
+  print(ds['train'][0])
+  return ds
+
 
 print('victim')
 victim = ob.PLMVictim(model="bert", path="bert-base-uncased")
@@ -12,21 +21,7 @@ print('attacker')
 attacker = ob.attackers.OrderBkdAttacker()
 
 print('datasets')
-poison_dataset = load_dataset(name="sst-2")
-# target_dataset = load_dataset(name="sst-2")
-
-print('poison')
-sliced_pd = slice_dataset(poison_dataset, 300)
-poisoned_dataset = attacker.poisoner.poison(sliced_pd)
-
-print('attack')
-# victim = attacker.attack(victim, poison_dataset) 
+poisoned_dataset = get_poisoned_dataset()
 
 print('train')
-victim = attacker.train(victim, sliced_pd) 
-
-print('demo')
-# attacker.demo()
-
-print('eval')
-# attacker.eval(victim, target_dataset)
+victim = attacker.train(victim, poisoned_dataset)
