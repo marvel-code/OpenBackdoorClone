@@ -22,6 +22,7 @@ examples/
 hyperopt/
 *.ckpt
 datasets/SentimentAnalysis
+venv/
 
 data
 poison_data

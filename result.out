@@ -1,0 +1,65 @@
+[2024-12-03 19:10:56,329 INFO] strip_defender Use 872 clean dev data, 6920 poisoned test data in total
+[2024-12-03 19:10:56,692 INFO] strip_defender There are 4360 perturbed sentences, example: ('proof of fire tale as if noyce was made movie much tailored -- fence economical best watched that way .', 1, 0)
+[2024-12-03 19:11:11,094 INFO] strip_defender There are 34600 perturbed sentences, example: ("movies trey parker , sandler does n't long time come wreck scariest exploiting molestation for easily creepiest funny blair not actually exploiting wrapped yourself .", 0, 0)
+[2024-12-03 19:12:52,528 INFO] strip_defender Constrain FRR to 0.01, threshold = 0.053722415270078504
+[2024-12-03 19:12:52,529 INFO] metrics Evaluating poison data detection: 692 poison samples, 6228 clean samples
+[2024-12-03 19:12:52,538 INFO] metrics [[6153   75]
+ [ 682   10]]
+[2024-12-03 19:12:52,539 INFO] eval FRR on train: 0.012042389210019268
+[2024-12-03 19:12:52,542 INFO] metrics Evaluating poison data detection: 692 poison samples, 6228 clean samples
+[2024-12-03 19:12:52,548 INFO] metrics [[6153   75]
+ [ 682   10]]
+[2024-12-03 19:12:52,549 INFO] eval FAR on train: 0.9855491329479769
+[2024-12-03 19:12:52,551 INFO] strip_defender Use 872 clean dev data, 872 poisoned test data in total
+[2024-12-03 19:12:52,822 INFO] strip_defender There are 4360 perturbed sentences, example: ('comedy wreck human wrench as interesting it was made without much writer -- and is best wretchedness that way .', 1, 0)
+[2024-12-03 19:13:05,767 INFO] strip_defender There are 4360 perturbed sentences, example: ('thrilling humor performances forced and heavy-handed , wrapped wreck simply wrench .', 0, 0)
+[2024-12-03 19:13:18,489 INFO] strip_defender Constrain FRR to 0.01, threshold = 0.0537594430771429
+[2024-12-03 19:13:18,491 INFO] metrics Evaluating poison data detection: 87 poison samples, 785 clean samples
+[2024-12-03 19:13:18,496 INFO] metrics [[779   6]
+ [ 85   2]]
+[2024-12-03 19:13:18,498 INFO] eval FRR on dev: 0.007643312101910828
+[2024-12-03 19:13:18,500 INFO] metrics Evaluating poison data detection: 87 poison samples, 785 clean samples
+[2024-12-03 19:13:18,504 INFO] metrics [[779   6]
+ [ 85   2]]
+[2024-12-03 19:13:18,505 INFO] eval FAR on dev: 0.9770114942528736
+[2024-12-03 19:13:18,507 INFO] strip_defender Use 872 clean dev data, 1821 poisoned test data in total
+...
+[2024-12-03 19:13:58,479 INFO] metrics Evaluating poison data detection: 182 poison samples, 1639 clean samples
+[2024-12-03 19:13:58,483 INFO] metrics [[1614   25]
+ [ 182    0]]
+[2024-12-03 19:13:58,484 INFO] eval FAR on test: 1.0
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+STRIPDefender score is {'train': 0.9855491329479769, 'dev': 0.9770114942528736, 'test': 1.0}
+
+[2024-12-03 19:14:12,434 INFO] rap_defender Epoch: 1, RAP loss: 0.1694087129120433, success rate 0.010321100242435932
+[2024-12-03 19:14:26,307 INFO] rap_defender Epoch: 2, RAP loss: 0.11068605132606052, success rate 0.014908256009221077
+[2024-12-03 19:14:40,184 INFO] rap_defender Epoch: 3, RAP loss: 0.10708692840753345, success rate 0.011467888951301575
+[2024-12-03 19:14:54,052 INFO] rap_defender Epoch: 4, RAP loss: 0.10636499086651233, success rate 0.011467888951301575
+[2024-12-03 19:15:07,870 INFO] rap_defender Epoch: 5, RAP loss: 0.10406674868469938, success rate 0.014908256009221077
+[2024-12-03 19:15:54,965 INFO] rap_defender clean diff 0.023859217762947083, poison diff 0.007166319526731968
+[2024-12-03 19:15:54,967 INFO] rap_defender clean asr 0.0199203187250996, poison asr 0.004190751445086705
+[2024-12-03 19:15:54,973 INFO] rap_defender Constrain FRR to 0.01, threshold = -0.013131260871887207
+[2024-12-03 19:15:54,975 INFO] metrics Evaluating poison data detection: 692 poison samples, 6228 clean samples
+[2024-12-03 19:15:54,983 INFO] metrics [[6199   29]
+ [ 690    2]]
+[2024-12-03 19:15:54,984 INFO] eval FRR on train: 0.004656390494540783
+[2024-12-03 19:15:54,986 INFO] metrics Evaluating poison data detection: 692 poison samples, 6228 clean samples
+[2024-12-03 19:15:54,993 INFO] metrics [[6199   29]
+ [ 690    2]]
+[2024-12-03 19:15:54,995 INFO] eval FAR on train: 0.9971098265895953
+[2024-12-03 19:16:08,757 INFO] rap_defender Epoch: 1, RAP loss: 0.10241597651615056, success rate 0.016055045649409294
+[2024-12-03 19:16:22,537 INFO] rap_defender Epoch: 2, RAP loss: 0.1013526154357359, success rate 0.017201833426952362
+[2024-12-03 19:16:36,313 INFO] rap_defender Epoch: 3, RAP loss: 0.10050239817264976, success rate 0.020642200484871864
+[2024-12-03 19:16:50,121 INFO] rap_defender Epoch: 4, RAP loss: 0.1000473156844804, success rate 0.02293577790260315
+[2024-12-03 19:17:03,923 INFO] rap_defender Epoch: 5, RAP loss: 0.09987972581058467, success rate 0.019495412707328796
+[2024-12-03 19:17:14,134 INFO] rap_defender clean diff 0.0235611405223608, poison diff 0.02243511565029621
+[2024-12-03 19:17:14,135 INFO] rap_defender clean asr 0.03386454183266932, poison asr 0.02522935779816514
+[2024-12-03 19:17:14,139 INFO] rap_defender Constrain FRR to 0.01, threshold = -0.0021385794878005984
+[2024-12-03 19:17:14,141 INFO] metrics Evaluating poison data detection: 87 poison samples, 785 clean samples
+...
+[2024-12-03 19:18:39,339 INFO] metrics Evaluating poison data detection: 182 poison samples, 1639 clean samples
+[2024-12-03 19:18:39,343 INFO] metrics [[1498  141]
+ [ 172   10]]
+[2024-12-03 19:18:39,344 INFO] eval FAR on test: 0.945054945054945
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+RAPDefender score is {'train': 0.9971098265895953, 'dev': 0.9425287356321839, 'test': 0.945054945054945}

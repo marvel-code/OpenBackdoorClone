@@ -40,8 +40,7 @@ def load_dataset(
         :obj:`Optional[List]`: The valid dataset.
         :obj:`Optional[List]`: The test dataset.
         :obj:"
-    """
-
+    """ 
     if load and os.path.exists(clean_data_basepath):
         train_dataset = load_clean_data(clean_data_basepath, "train-clean")
         dev_dataset = load_clean_data(clean_data_basepath, "dev-clean")
@@ -61,7 +60,6 @@ def load_dataset(
     dev_dataset = None
 
     if not test:
-
         try:
             train_dataset = processor.get_train_examples()
         except FileNotFoundError:

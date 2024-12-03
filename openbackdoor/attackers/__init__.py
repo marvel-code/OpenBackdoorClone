@@ -6,6 +6,8 @@ from .por_attacker import PORAttacker
 from .lwp_attacker import LWPAttacker
 from .lws_attacker import LWSAttacker
 from .ripples_attacker import RIPPLESAttacker
+from .orderbkd_attacker import OrderBkdAttacker
+
 ATTACKERS = {
     "base": Attacker,
     "ep": EPAttacker,
@@ -14,7 +16,8 @@ ATTACKERS = {
     "por": PORAttacker,
     "lwp": LWPAttacker,
     'lws': LWSAttacker,
-    'ripples': RIPPLESAttacker
+    'ripples': RIPPLESAttacker,
+    'orderbkd': OrderBkdAttacker
 }
 
 
